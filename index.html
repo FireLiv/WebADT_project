@@ -1,1 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG Game</title>
+    <style>
 
+        /* Общие стили */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://cdn.wallpapersafari.com/21/97/r1sIcZ.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #fff;
+        }
+
+        /* Стили для мини-карты */
+.mini-map {
+    width: 160px;
+    height: 160px;
+    background-image: url('https://i.ytimg.com/vi/heIGOHxTXq4/mqdefault.jpg');
+    background-size: 190%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 100%;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+        /* Стили для меню */
+.top-center {
+    text-align: center;
+    padding-top: 20;
+}
+
+.menu {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu-container {
+    background-color: beige;
+    text-align: center;
+    padding: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+.menu a {
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.menu-button {
+    width: 100px;
+    height: 40px;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    overflow: hidden;
+    border-radius: 5px;
+    margin: -250px 5px 5px 5px;
+    cursor: pointer;
+}
+
+.menu-button:hover {
+    background-color: #555;
+}
+
+        
+.bottom-center {
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    width: 1000px;
+}
+
+        /* Стили для героев */
+.heroo {
+    width: 150px;
+    height: 200px;
+    background-color: #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    margin-right: 8px;
+}
+
+.heroo img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    transform: scale(1.5) translate(0, 5%);
+}
+
+/* Стили для контейнера с героями */
+.hero-container {
+     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    background-color: beige;
+    border-radius: 8px;
+    padding: 7px;
+    margin: 0 auto;
+    max-width: 950px;
+}
+
+        /* Стили для инвентаря */
+        .bottom-left {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .inventory {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .inventory-slot {
+            width: 40px;
+            height: 40px;
+            background-color: #555;
+            margin: 5px;
+        }
+
+        /* Стили для чата */
+        .bottom-right {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .chat {
+            width: 300px;
+            height: 200px;
+            background-color: #666;
+        }
+
+/* Стили для контейнера инвентаря */
+.inventory-container {
+    background-color: beige;
+    padding: 10px;
+    border-radius: 8px;
+    width: fit-content;
+}
+
+.inventory {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.inventory-slot {
+    width: 85px;
+    height: 85px;
+    background-color: #555;
+    border: 2px solid #fff;
+    overflow: hidden;
+    position: relative;
+     border-radius: 8px;
+}
+
+.inventory-slot img {
+    max-width: 100%; 
+    max-height: 100%;
+    display: block;
+}
+
+/* Стили для контейнера чата */
+.chat-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 415px; 
+    height: 220px;
+    background-color: beige;
+    border-radius: 8px;
+    
+}
+/* Стили для чата */
+.chat {
+    width: 380px;
+    height: 190px;
+    background-color: #666;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+.bottom-right {
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
+}
+
+
+/* Стили для контейнера с ячейками способностей */
+.abilities-menu {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: -290px;
+}
+
+/* Стили для ячеек способностей */
+.ability {
+    width: 60px;
+    height: 60px;
+    background-color: #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #fff;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10%;
+}
+
+.ability img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+    </style>
+    
+</head>
+<body>
+    
+    <div class="top-left">
+        <div class="mini-map"></div>
+    </div>
+    <div class="top-center">
+    <nav class="menu-container">
+        <ul class="menu">
+            <li><a href="#">Exit</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Inventory</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Quest Log</a></li>
+        </ul>
+    </nav>
+</div>
+    
+    <div class="bottom-center">
+        <div class="hero-container">
+    <div class="hero">
+        <div class="heroo"><img src="https://i.pinimg.com/564x/e0/60/b6/e060b662a46c1b66d80eadc90be40bac.jpg" alt="Tartaglia"></div>
+        <div class="heroo"><img src="https://i.pinimg.com/564x/e5/98/eb/e598eb2205e307129c7601e6d3e7d470.jpg" alt="Miko"></div>
+        <div class="heroo"><img src="https://i.pinimg.com/564x/c5/ba/35/c5ba355005517f2b58d449d024c57020.jpg" alt="Kazuha"></div>
+        <div class="heroo"><img src="https://i.pinimg.com/564x/7e/44/55/7e4455d1d0c7a5bb6e485b8b70cb67ca.jpg" alt="Ayato"></div>
+        <div class="heroo"><img src="https://i.pinimg.com/564x/32/98/d4/3298d44d9dace2f46a76edafdf803187.jpg" alt="Jean"></div>
+    </div>
+    </div>
+</div>
+
+    <div class="bottom-left">
+        <div class="inventory-container">
+        <div class="inventory">
+            <div class="inventory-slot">
+            <img src="https://i.pinimg.com/564x/fe/22/a0/fe22a0953fbf4c5a65ae1d6620886ff8.jpg">
+        </div><div class="inventory-slot">
+            <img src="https://i.pinimg.com/564x/5a/f3/b1/5af3b1fdcd56a8a249ed6f7294d25d05.jpg">
+        </div><div class="inventory-slot">
+            <img src="https://i.pinimg.com/564x/2c/e3/e5/2ce3e5872577f473723d56b3ba37ca3b.jpg">
+        </div><div class="inventory-slot">
+            <img src="https://i.pinimg.com/564x/fa/d1/2a/fad12a2acc07e4d7faa1ec58af5c4d69.jpg">
+        </div><div class="inventory-slot">
+            <img src="https://i.pinimg.com/564x/b3/04/8c/b3048ce110f68a07c4c6a43a6f6e3567.jpg">
+        </div><div class="inventory-slot">
+            <img src="https://i.pinimg.com/564x/71/ea/21/71ea21b24d44feff888fe3c6e030daf7.jpg">
+        </div><div class="inventory-slot">
+            <img src="https://i.pinimg.com/564x/7f/c8/8a/7fc88ae8ee6ba15863a3f062f91a206e.jpg">
+        </div><div class="inventory-slot">
+            <img src="https://i.pinimg.com/564x/0a/d8/8c/0ad88ca8fc4e6ffbe4160afc82cab9f4.jpg">
+        </div>
+        </div>
+        </div>
+    </div>
+    
+    <div class="bottom-right">
+        <div class="chat-container">
+        <div class="chat">
+                        <p>- Hello, this is a chat!</p>
+            <p>- Here you can communicate with other players and receive important messages.</p>
+        </div>
+    </div>
+    </div>
+    
+    <div class="bottom-center">
+    <div class="abilities-menu">
+         <div class="ability">
+            <img src="https://i.pinimg.com/564x/f5/8d/c3/f58dc391dc5444b37d9bbafff09a8527.jpg">
+        </div>
+        <div class="ability">
+            <img src="https://i.pinimg.com/564x/80/8f/ba/808fbad95f4cf7db510b6ca3e925c9fb.jpg">
+        </div>
+        <div class="ability">
+            <img src="https://i.pinimg.com/564x/e9/61/f4/e961f4af3c9867c73ce56b9e73c7e7d6.jpg">
+        </div>
+        <div class="ability">
+            <img src="https://i.pinimg.com/564x/72/7c/38/727c38bf1938996d85bacf6f8c02e1b1.jpg">
+        </div>
+        <div class="ability">
+            <img src="https://i.pinimg.com/564x/e0/d1/03/e0d103da4432a81097c54f9f63ff20a0.jpg">
+        </div>
+        <div class="ability">
+            <img src="https://i.pinimg.com/564x/a0/21/f8/a021f83c8768c3a41f0dcffd14a437f6.jpg">
+        </div>
+        <div class="ability">
+            <img src="https://i.pinimg.com/564x/c0/c0/79/c0c0793eba5f43633782b5d93720c8f9.jpg">
+        </div>
+    </div>
+</div>
+    
+</body>
+</html>
